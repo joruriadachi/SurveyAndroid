@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">Survey 1</string>
+    <string name="GPSAlertDialogTitle">GPS is setting</string>
+    <string name="action_settings">Settings</string>
+    <string name="GPSAlertDialogMessage">GPS is not enabled. Do you want to go to setting menu</string>
+    <string-array name="kwh">
+        <item>==[Pilih KWH]==</item>
+        <item>BERFUNGSI</item>
+        <item>ADA</item>
+        <item>TIDAK_ADA</item>
+    </string-array>
+
+    <string-array name="survey">
+        <item>==[Pilih SURVEY]==</item>
+        <item>SURVEY 1</item>
+        <item>SURVEY 2</item>
+    </string-array>
+
+    <string-array name="kontaktor">
+        <item>==[Pilih Kontaktor]==</item>
+        <item>BERFUNGSI</item>
+        <item>ADA</item>
+        <item>TIDAK_ADA</item>
+    </string-array>
+
+    <string-array name="batas">
+        <item>==[Pilih Batas]==</item>
+        <item>BERFUNGSI</item>
+        <item>ADA</item>
+        <item>TIDAK_ADA</item>
+    </string-array>
+
+    <string-array name="mcb">
+        <item>==[Pilih MCB]==</item>
+        <item>BERFUNGSI</item>
+        <item>ADA</item>
+        <item>TIDAK_ADA</item>
+    </string-array>
+
+    <string-array name="switchs">
+        <item>==[Pilih Switch]==</item>
+        <item>PHOTO_CELL</item>
+        <item>MANUAL</item>
+        <item>TIMER</item>
+    </string-array>
+    <string-array name="ground">
+        <item>==[Pilih Ground]==</item>
+        <item>ADA</item>
+        <item>TIDAK_ADA</item>
+    </string-array>
+    <string-array name="kondisi">
+        <item>==[Pilih Kondisi]==</item>
+        <item>BAIK</item>
+        <item>ADA</item>
+        <item>RUSAK</item>
+    </string-array>
+    <string-array name="keterangan">
+        <item>==[Pilih Keterangan]==</item>
+        <item>BERFUNGSI</item>
+        <item>TIDAK_BERFUNGSI</item>
+    </string-array>
+    <string name="title_activity_survey2">Survey2</string>
+</resources>
