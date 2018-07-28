@@ -1,8 +1,12 @@
 package com.project.untag.survey1;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +24,9 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.error.VolleyError;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.project.untag.survey1.API.Global;
@@ -47,17 +54,19 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner spKWH,spKontaktor,spBatas,spMCB,spSwitch,spGround,spKondisi,spKeterangan,spWilayah;
-    EditText edWatt, edDaya, edTanggal,edNomor,edIdPel,edProvinsi,edKabupatenKota,edNama,edAlamat,edKecamatan,edWilayah,edJumlah,edCospi,edAmpere,edStandM,edLat,edLng,edJumlahMCB, edVoltAmpere;
+    Spinner spKWH, spKontaktor, spBatas, spMCB, spSwitch, spGround, spKondisi, spKeterangan, spWilayah;
+    EditText edWatt, edDaya, edTanggal, edNomor, edIdPel, edProvinsi, edKabupatenKota, edNama, edAlamat, edKecamatan, edWilayah, edJumlah, edCospi, edAmpere, edStandM, edLat, edLng, edJumlahMCB, edVoltAmpere;
     ImageView imgPhoto;
-    ImageButton btnSave,btnSearch,btnNewSave;
+    ImageButton btnSave, btnSearch, btnNewSave;
     Drawable placeholder;
     ArrayList<String> arrWIlayah;
 
-    ArrayAdapter<CharSequence> adapter_kwh,adapter_kontaktor,adapter_batas,adapter_mcb,adapter_switchs,adapter_ground,adapter_kondisi,adapter_keterangan,adapter_survey;
+    ArrayAdapter<CharSequence> adapter_kwh, adapter_kontaktor, adapter_batas, adapter_mcb, adapter_switchs, adapter_ground, adapter_kondisi, adapter_keterangan, adapter_survey;
     ArrayAdapter<String> adapter_wilayah;
     GPSTracker gpsTracker;
-    String stringLatitude,stringLongitude;
+    private FusedLocationProviderClient mFusedLocationClient;
+
+    String stringLatitude, stringLongitude;
     private Survey mCurrentSurvey;
     private Gson gson;
 
@@ -73,6 +82,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            Toast.makeText(getApplication(), "Gk AKtip", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                            Log.d("Ikko Lat", "onSuccess: "+location.getLatitude());
+                            Log.d("Ikko Lng", "onSuccess: "+location.getLongitude());
+                            stringLatitude = String.valueOf(location.getLatitude());
+                            stringLongitude = String.valueOf(location.getLongitude());
+                            edLat.setText(stringLatitude);
+                            edLng.setText(stringLongitude);
+                        }
+                    }
+                });
 
 //        if (!Util.isConnectingToInternet(this)) {
 ////            AlertDialogError.setTitleText("Error").setContentText("Anda tidak sedang terhubung dengan Internet").setConfirmText("OK").show();
@@ -174,10 +210,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (gpsTracker.getIsGPSTrackingEnabled())
         {
-            stringLatitude = String.valueOf(gpsTracker.latitude);
-            stringLongitude = String.valueOf(gpsTracker.longitude);
-            edLat.setText(stringLatitude);
-            edLng.setText(stringLongitude);
+            if (gpsTracker.latitude > 0 && gpsTracker.longitude > 0){
+                stringLatitude = String.valueOf(gpsTracker.latitude);
+                stringLongitude = String.valueOf(gpsTracker.longitude);
+                edLat.setText(stringLatitude);
+                edLng.setText(stringLongitude);
+            }
+
 
         }else{
             gpsTracker.showSettingsAlert();

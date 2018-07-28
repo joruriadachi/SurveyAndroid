@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+
+
 public class HomeActivity extends AppCompatActivity {
     ImageView imgSurvey1,imgSurvey2;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
