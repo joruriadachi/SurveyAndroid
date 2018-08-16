@@ -44,6 +44,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -513,6 +514,8 @@ public class MainActivity extends AppCompatActivity {
 
         );
 
+        Log.d("Ikko", "sendSurvey: "+edIdPel.getText().toString());
+
         request.addStringParam("No", edNomor.getText().toString());
         request.addStringParam("Id_Pel", edIdPel.getText().toString());
         request.addStringParam("Kd_Provinsi", edProvinsi.getText().toString());
@@ -521,10 +524,19 @@ public class MainActivity extends AppCompatActivity {
         request.addStringParam("Nama", edNama.getText().toString());
         request.addStringParam("Alamat", edAlamat.getText().toString());
 //        request.addStringParam("Kec", edKecamatan.getText().toString());
-        request.addStringParam("Wilayah", edWilayah.getText().toString());
+        request.addStringParam("Wilayah", spWilayah.getSelectedItem().toString());
         request.addStringParam("Lat", edLat.getText().toString());
         request.addStringParam("Long", edLng.getText().toString());
-        request.addStringParam("Tanggal", edTanggal.getText().toString());
+
+        SimpleDateFormat fmt = new SimpleDateFormat("MM-dd-yyyy HH:mm");
+        try {
+            Date inputDate = fmt.parse(edTanggal.getText().toString());
+            request.addStringParam("Tanggal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(inputDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
         request.addStringParam("Jumlah", edJumlah.getText().toString());
         request.addStringParam("Kwh", spKWH.getSelectedItem().toString());
         request.addStringParam("Batas", spBatas.getSelectedItem().toString());
@@ -596,10 +608,18 @@ public class MainActivity extends AppCompatActivity {
         request.addStringParam("Nama", edNama.getText().toString());
         request.addStringParam("Alamat", edAlamat.getText().toString());
 //        request.addStringParam("Kec", edKecamatan.getText().toString());
-        request.addStringParam("Wilayah", edWilayah.getText().toString());
+//        request.addStringParam("Wilayah", edWilayah.getText().toString());
+        request.addStringParam("Wilayah", spWilayah.getSelectedItem().toString());
         request.addStringParam("Lat", edLat.getText().toString());
         request.addStringParam("Long", edLng.getText().toString());
-        request.addStringParam("Tanggal", edTanggal.getText().toString());
+        //request.addStringParam("Tanggal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(edTanggal.getText().toString()));
+        SimpleDateFormat fmt = new SimpleDateFormat("MM-dd-yyyy HH:mm");
+        try {
+            Date inputDate = fmt.parse(edTanggal.getText().toString());
+            request.addStringParam("Tanggal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(inputDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         request.addStringParam("Jumlah", edJumlah.getText().toString());
         request.addStringParam("Kwh", spKWH.getSelectedItem().toString());
         request.addStringParam("Batas", spBatas.getSelectedItem().toString());
