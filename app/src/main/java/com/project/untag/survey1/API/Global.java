@@ -17,6 +17,9 @@ public class Global {
 
     public static final String ADD_SURVEY = BASE_URL+"/survey/savesurvey";
     public static final String ADD_NEW_SURVEY = BASE_URL+"/survey/savenewsurvey";
+    public static final String ADD_NEW_TIANG = BASE_URL+"/survey/addtiang";
+
+
     public static final String GET_DATA_SURVEY = BASE_URL+"/survey/getdatasurvey";
     public static final String GET_DATA_WILAYAH = BASE_URL+"/survey/getwilayah";
     public static final String GET_TOTAL_DATA = BASE_URL+"/survey/gettotalwilayah";

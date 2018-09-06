@@ -8,6 +8,17 @@
     android:padding="10dp"
     tools:context=".FormTiang">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edIDPel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ID Pel" />
+    </android.support.design.widget.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,38 +93,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <android.support.design.widget.TextInputLayout
+        <Switch
+            android:id="@+id/swKeterangan"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Keterangan"
+            android:textOff="MATI"
+            android:textOn="NYALA" />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/edKeterangan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Keterangan" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <Switch
-                android:id="@+id/switch1"
+            <TextView
+                android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Status" />
-        </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imgPhoto"
+        android:id="@+id/imgKondisiTiang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        app:srcCompat="@drawable/gallery" />
+        app:srcCompat="@drawable/placeholder_square" />
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
         android:text="Save" />
 </LinearLayout>
