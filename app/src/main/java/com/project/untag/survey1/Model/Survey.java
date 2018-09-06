@@ -1,11 +1,10 @@
 package com.project.untag.survey1.Model;
-
 import com.google.gson.annotations.SerializedName;
 
 public class Survey{
 
 	@SerializedName("StandKWH2")
-	private String standKWH2;
+	private Object standKWH2;
 
 	@SerializedName("Nama")
 	private String nama;
@@ -41,7 +40,7 @@ public class Survey{
 	private String tanggal1;
 
 	@SerializedName("Tanggal2")
-	private String tanggal2;
+	private Object tanggal2;
 
 	@SerializedName("IDPel")
 	private String iDPel;
@@ -91,11 +90,11 @@ public class Survey{
 	@SerializedName("Provinsi")
 	private String provinsi;
 
-	public void setStandKWH2(String standKWH2){
+	public void setStandKWH2(Object standKWH2){
 		this.standKWH2 = standKWH2;
 	}
 
-	public String getStandKWH2(){
+	public Object getStandKWH2(){
 		return standKWH2;
 	}
 
@@ -187,11 +186,11 @@ public class Survey{
 		return tanggal1;
 	}
 
-	public void setTanggal2(String tanggal2){
+	public void setTanggal2(Object tanggal2){
 		this.tanggal2 = tanggal2;
 	}
 
-	public String getTanggal2(){
+	public Object getTanggal2(){
 		return tanggal2;
 	}
 
@@ -326,7 +325,7 @@ public class Survey{
 	@Override
  	public String toString(){
 		return 
-			"Data{" + 
+			"Survey{" + 
 			"standKWH2 = '" + standKWH2 + '\'' + 
 			",nama = '" + nama + '\'' + 
 			",watt = '" + watt + '\'' + 

@@ -60,4 +60,5 @@
         <item>TIDAK_BERFUNGSI</item>
     </string-array>
     <string name="title_activity_survey2">Survey2</string>
+    <string name="title_activity_tiang">TiangActivity</string>
 </resources>

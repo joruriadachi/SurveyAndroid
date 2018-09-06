@@ -25,7 +25,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class HomeActivity extends AppCompatActivity {
-    ImageView imgSurvey1,imgSurvey2;
+    ImageView imgSurvey1,imgSurvey2,imgTiang;
     TextView tvTotal,tvTotalIsi;
     private MultipartJSONRequest request;
     SweetAlertDialog AlertDialogSuccess;
@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
 
         imgSurvey1 = (ImageView)findViewById(R.id.imgSurvey1);
         imgSurvey2 = (ImageView)findViewById(R.id.imgSurvey2);
+        imgTiang = (ImageView)findViewById(R.id.imgTiang);
         tvTotal = (TextView)findViewById(R.id.tvTotal);
         tvTotalIsi = (TextView)findViewById(R.id.tvTotalIsi);
 
@@ -60,6 +61,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeActivity.this,Survey2Activity.class));
+            }
+        });
+
+        imgTiang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this,TiangActivity.class));
             }
         });
 
