@@ -43,6 +43,8 @@ public class LampuAdapter extends RecyclerView.Adapter<LampuAdapter.LampuViewHol
         holder.tvKondisi.setText(dataList.get(position).getLampu().getJenisLampu().getNmJenisLampu());
         holder.tvWattVA.setText("Watt :"+dataList.get(position).getLampu().getWattLampu()+"VA : "+dataList.get(position).getLampu().getVALampu());
 
+        Log.d("TAG", "onBindViewHolder: "+dataList.get(position).getKondisiLampu());
+
         Picasso.get()
                 .load(dataList.get(position).getKondisiLampu())
                 .placeholder(R.drawable.placeholder_square)
