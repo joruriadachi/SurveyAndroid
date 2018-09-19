@@ -1,10 +1,12 @@
 package com.project.untag.survey1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -18,7 +20,7 @@ import com.project.untag.survey1.API.Global;
 import com.project.untag.survey1.API.MultipartJSONRequest;
 import com.project.untag.survey1.API.MyRequest;
 import com.project.untag.survey1.Adapter.LampuAdapter;
-import com.project.untag.survey1.Model.Lampu;
+import com.project.untag.survey1.Model.LampuPJU;
 import com.project.untag.survey1.Model.Tiang;
 
 import org.json.JSONArray;
@@ -31,8 +33,9 @@ import java.util.List;
 public class LampuActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    Button btnAddLampu;
     private LampuAdapter adapter;
-    private List<Lampu> arrLampu = new ArrayList<>();;
+    private List<LampuPJU> arrLampu = new ArrayList<>();;
 
     private MultipartJSONRequest request;
     private Gson gson;
@@ -44,6 +47,7 @@ public class LampuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lampu);
 
         recyclerView = (RecyclerView) findViewById(R.id.rvLampu);
+        btnAddLampu = (Button)findViewById(R.id.btnAddLampu);
         String strObj = getIntent().getStringExtra("objTiang");
 
         Gson gsonforobj = new Gson();
@@ -54,10 +58,20 @@ public class LampuActivity extends AppCompatActivity {
 
         initRecycler();
 
+        btnAddLampu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent intent = new Intent(LampuActivity.this, FormLampu.class);
+                Gson gson = new Gson();
+                intent.putExtra("objTiang", gson.toJson(mCurrentTiang).toString());
+                LampuActivity.this.startActivity(intent);
+            }
+        });
     }
 
+
+
     public void initRecycler(){
-        Log.d("asd", "onResponse: "+arrLampu);
         adapter = new LampuAdapter(arrLampu,this);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(LampuActivity.this);
@@ -69,7 +83,7 @@ public class LampuActivity extends AppCompatActivity {
     }
 
     public void fetchLampu(){
-        String url = Global.GET_DATA_LAMPU;
+        String url = Global.GET_DATA_LAMPU_PJU;
         request = new MultipartJSONRequest(Request.Method.GET, url,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -80,12 +94,18 @@ public class LampuActivity extends AppCompatActivity {
                                 JSONArray jsonArray=response.getJSONArray(Global.JSON_DATA);
 
 
-                                List<Lampu> items = new Gson().fromJson(jsonArray.toString(), new TypeToken<List<Lampu>>() {
+                                List<LampuPJU> items = new Gson().fromJson(jsonArray.toString(), new TypeToken<List<LampuPJU>>() {
                                 }.getType());
 
                                 // adding contacts to contacts list
+
+
+
                                 arrLampu.clear();
                                 arrLampu.addAll(items);
+
+                                Log.d("TAg", "onResponse: "+arrLampu);
+
                                 initRecycler();
                                 // refreshing recycler view
                                 adapter.notifyDataSetChanged();

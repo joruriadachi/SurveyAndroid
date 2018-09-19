@@ -101,6 +101,7 @@ public class FormTiang extends AppCompatActivity {
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
+                        Log.d("TAG", "onSuccess: "+location);
                         if (location != null) {
                             Log.d("Ikko Lat", "onSuccess: "+location.getLatitude());
                             Log.d("Ikko Lng", "onSuccess: "+location.getLongitude());

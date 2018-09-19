@@ -44,7 +44,8 @@
         <activity android:name=".Survey2Activity" />
         <activity android:name=".TiangActivity" />
         <activity android:name=".LampuActivity" />
-        <activity android:name=".FormTiang"></activity>
+        <activity android:name=".FormTiang" />
+        <activity android:name=".FormLampu"></activity>
     </application>
 
 </manifest>

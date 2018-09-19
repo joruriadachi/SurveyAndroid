@@ -10,26 +10,17 @@ public class Lampu{
 	@SerializedName("JenisLampu")
 	private JenisLampu jenisLampu;
 
-	@SerializedName("LatitudeLampu")
-	private String latitudeLampu;
-
 	@SerializedName("WattLampu")
 	private String wattLampu;
 
-	@SerializedName("KondisiLampu")
-	private String kondisiLampu;
-
-	@SerializedName("IDTiang")
-	private String iDTiang;
+	@SerializedName("FAktif")
+	private String fAktif;
 
 	@SerializedName("VALampu")
 	private String vALampu;
 
 	@SerializedName("IDLampu")
 	private String iDLampu;
-
-	@SerializedName("LongitudeLampu")
-	private String longitudeLampu;
 
 	public void setIDJenisLampu(String iDJenisLampu){
 		this.iDJenisLampu = iDJenisLampu;
@@ -47,14 +38,6 @@ public class Lampu{
 		return jenisLampu;
 	}
 
-	public void setLatitudeLampu(String latitudeLampu){
-		this.latitudeLampu = latitudeLampu;
-	}
-
-	public String getLatitudeLampu(){
-		return latitudeLampu;
-	}
-
 	public void setWattLampu(String wattLampu){
 		this.wattLampu = wattLampu;
 	}
@@ -63,20 +46,12 @@ public class Lampu{
 		return wattLampu;
 	}
 
-	public void setKondisiLampu(String kondisiLampu){
-		this.kondisiLampu = kondisiLampu;
+	public void setFAktif(String fAktif){
+		this.fAktif = fAktif;
 	}
 
-	public String getKondisiLampu(){
-		return kondisiLampu;
-	}
-
-	public void setIDTiang(String iDTiang){
-		this.iDTiang = iDTiang;
-	}
-
-	public String getIDTiang(){
-		return iDTiang;
+	public String getFAktif(){
+		return fAktif;
 	}
 
 	public void setVALampu(String vALampu){
@@ -95,27 +70,16 @@ public class Lampu{
 		return iDLampu;
 	}
 
-	public void setLongitudeLampu(String longitudeLampu){
-		this.longitudeLampu = longitudeLampu;
-	}
-
-	public String getLongitudeLampu(){
-		return longitudeLampu;
-	}
-
 	@Override
  	public String toString(){
 		return 
-			"Lampu{" +
+			"Lampu{" + 
 			"iDJenisLampu = '" + iDJenisLampu + '\'' + 
 			",jenisLampu = '" + jenisLampu + '\'' + 
-			",latitudeLampu = '" + latitudeLampu + '\'' + 
 			",wattLampu = '" + wattLampu + '\'' + 
-			",kondisiLampu = '" + kondisiLampu + '\'' + 
-			",iDTiang = '" + iDTiang + '\'' + 
+			",fAktif = '" + fAktif + '\'' + 
 			",vALampu = '" + vALampu + '\'' + 
 			",iDLampu = '" + iDLampu + '\'' + 
-			",longitudeLampu = '" + longitudeLampu + '\'' + 
 			"}";
 		}
 }
