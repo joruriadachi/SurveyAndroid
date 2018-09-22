@@ -8,7 +8,7 @@ import org.json.JSONObject;
  */
 
 public class Global {
-    public static final String BASE_URL = "http://192.168.43.224/SurveyAPI/";
+    public static final String BASE_URL = "http://192.168.137.1/SurveyAPI/";
     public static final String JSON_META = "Meta";
     public static final String PARAM_MESSAGE_CODE = "Code";
     public static final String JSON_MESSAGE = "Message";
@@ -17,6 +17,10 @@ public class Global {
 
     public static final String ADD_SURVEY = BASE_URL+"/survey/savesurvey";
     public static final String ADD_NEW_SURVEY = BASE_URL+"/survey/savenewsurvey";
+
+    public static final String ADD_NEW_SURVEY2 = BASE_URL+"/survey/savesurvey2";
+
+
     public static final String ADD_NEW_TIANG = BASE_URL+"/survey/addtiang";
 
 

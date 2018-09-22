@@ -16,6 +16,12 @@
         <item>GROUP</item>
     </string-array>
 
+    <string-array name="status_kabel_inner_outer">
+        <item>==[Pilih STATUS]==</item>
+        <item>Twisted</item>
+        <item>Untwisted</item>
+    </string-array>
+
     <string-array name="survey">
         <item>==[Pilih SURVEY]==</item>
         <item>SURVEY 1</item>

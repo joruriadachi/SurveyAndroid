@@ -55,14 +55,14 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner spKWH, spKontaktor, spBatas, spMCB, spSwitch, spGround, spKondisi, spKeterangan, spWilayah;
+    Spinner spKWH, spKontaktor, spBatas, spMCB, spSwitch, spGround, spKondisi, spKeterangan, spWilayah,spKabelInner,spKabelOuter;
     EditText edWatt, edDaya, edTanggal, edNomor, edIdPel, edProvinsi, edKabupatenKota, edNama, edAlamat, edKecamatan, edWilayah, edJumlah, edCospi, edAmpere, edStandM, edLat, edLng, edJumlahMCB, edVoltAmpere;
     ImageView imgPhoto;
     ImageButton btnSave, btnSearch, btnNewSave;
     Drawable placeholder;
     ArrayList<String> arrWIlayah;
 
-    ArrayAdapter<CharSequence> adapter_kwh, adapter_kontaktor, adapter_batas, adapter_mcb, adapter_switchs, adapter_ground, adapter_kondisi, adapter_keterangan, adapter_survey;
+    ArrayAdapter<CharSequence> adapter_kwh, adapter_kontaktor, adapter_batas, adapter_mcb, adapter_switchs, adapter_ground, adapter_kondisi, adapter_keterangan, adapter_survey,adapter_kabelinner,adapter_kabelouter;
     ArrayAdapter<String> adapter_wilayah;
     GPSTracker gpsTracker;
     private FusedLocationProviderClient mFusedLocationClient;
@@ -134,6 +134,10 @@ public class MainActivity extends AppCompatActivity {
         spGround = (Spinner)findViewById(R.id.spGround);
         spKondisi = (Spinner)findViewById(R.id.spKondisi);
         spWilayah = (Spinner)findViewById(R.id.spWilayah);
+
+        spKabelInner = (Spinner)findViewById(R.id.spKabelInner);
+        spKabelOuter = (Spinner)findViewById(R.id.spKabelOuter);
+
         spKeterangan = (Spinner)findViewById(R.id.spKeterangan);
         edTanggal = (EditText)findViewById(R.id.edTanggal);
         imgPhoto = (ImageView)findViewById(R.id.imgPhoto);
@@ -309,6 +313,12 @@ public class MainActivity extends AppCompatActivity {
         adapter_survey = ArrayAdapter.createFromResource(this,R.array.survey, android.R.layout.simple_spinner_dropdown_item);
         adapter_survey.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        adapter_kabelinner = ArrayAdapter.createFromResource(this,R.array.status_kabel_inner_outer, android.R.layout.simple_spinner_dropdown_item);
+        adapter_kabelinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        adapter_kabelouter = ArrayAdapter.createFromResource(this,R.array.status_kabel_inner_outer, android.R.layout.simple_spinner_dropdown_item);
+        adapter_kabelouter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         arrWIlayah.add("==WILAYAH==");
         adapter_wilayah = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item,
@@ -335,6 +345,8 @@ public class MainActivity extends AppCompatActivity {
         spKeterangan.setAdapter(adapter_keterangan);
         adapter_wilayah.setNotifyOnChange(true);
         spWilayah.setAdapter(adapter_wilayah);
+        spKabelInner.setAdapter(adapter_kabelinner);
+        spKabelOuter.setAdapter(adapter_kabelouter);
 
         edTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
