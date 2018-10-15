@@ -22,6 +22,7 @@ public class Global {
 
 
     public static final String ADD_NEW_TIANG = BASE_URL+"/survey/addtiang";
+    public static final String UPDATE_TIANG = BASE_URL+"/survey/edittiang";
 
 
     public static final String GET_DATA_SURVEY = BASE_URL+"/survey/getdatasurvey";

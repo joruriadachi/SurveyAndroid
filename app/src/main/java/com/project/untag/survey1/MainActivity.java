@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Date currentTime = Calendar.getInstance().getTime();
-        String fDate = new SimpleDateFormat("MM/dd/yyyy").format(currentTime);
+        String fDate = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
         edTanggal.setText(fDate);
 
         init();
@@ -384,7 +384,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateLabel() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "yyyy-MM-dd"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         edTanggal.setText(sdf.format(kalender.getTime()));
@@ -539,14 +539,9 @@ public class MainActivity extends AppCompatActivity {
         request.addStringParam("Wilayah", spWilayah.getSelectedItem().toString());
         request.addStringParam("Lat", edLat.getText().toString());
         request.addStringParam("Long", edLng.getText().toString());
+        request.addStringParam("Tanggal1", edTanggal.getText().toString());
 
-        SimpleDateFormat fmt = new SimpleDateFormat("MM-dd-yyyy HH:mm");
-        try {
-            Date inputDate = fmt.parse(edTanggal.getText().toString());
-            request.addStringParam("Tanggal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(inputDate));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
 
 
         request.addStringParam("Jumlah", edJumlah.getText().toString());
@@ -565,6 +560,10 @@ public class MainActivity extends AppCompatActivity {
         request.addStringParam("VoltAmpere", edVoltAmpere.getText().toString());
         request.addStringParam("Daya", edDaya.getText().toString());
         request.addStringParam("Watt", edWatt.getText().toString());
+
+        request.addStringParam("KabelInner", spKabelOuter.getSelectedItem().toString());
+        request.addStringParam("KabelOuter", spKabelInner.getSelectedItem().toString());
+
 
         if (fileImagePath != null || !fileImagePath.isEmpty()) {
             Log.d("ikko", "sendSurvey: "+fileImagePath);
@@ -624,14 +623,14 @@ public class MainActivity extends AppCompatActivity {
         request.addStringParam("Wilayah", spWilayah.getSelectedItem().toString());
         request.addStringParam("Lat", edLat.getText().toString());
         request.addStringParam("Long", edLng.getText().toString());
-        //request.addStringParam("Tanggal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(edTanggal.getText().toString()));
-        SimpleDateFormat fmt = new SimpleDateFormat("MM-dd-yyyy HH:mm");
-        try {
-            Date inputDate = fmt.parse(edTanggal.getText().toString());
-            request.addStringParam("Tanggal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(inputDate));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        request.addStringParam("Tanggal", edTanggal.getText().toString());
+//        SimpleDateFormat fmt = new SimpleDateFormat("MM-dd-yyyy HH:mm");
+//        try {
+//            Date inputDate = fmt.parse(edTanggal.getText().toString());
+//            request.addStringParam("Tanggal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(inputDate));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         request.addStringParam("Jumlah", edJumlah.getText().toString());
         request.addStringParam("Kwh", spKWH.getSelectedItem().toString());
         request.addStringParam("Batas", spBatas.getSelectedItem().toString());
@@ -648,6 +647,9 @@ public class MainActivity extends AppCompatActivity {
         request.addStringParam("VoltAmpere", edVoltAmpere.getText().toString());
         request.addStringParam("Daya", edDaya.getText().toString());
         request.addStringParam("Watt", edWatt.getText().toString());
+
+        request.addStringParam("KabelInner", spKabelOuter.getSelectedItem().toString());
+        request.addStringParam("KabelOuter", spKabelInner.getSelectedItem().toString());
 
         if (fileImagePath != null || !fileImagePath.isEmpty()) {
             Log.d("ikko", "sendSurvey: "+fileImagePath);

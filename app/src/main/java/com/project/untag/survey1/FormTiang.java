@@ -200,7 +200,12 @@ public class FormTiang extends AppCompatActivity {
     }
 
     public void saveTiang(){
-        String url = Global.ADD_NEW_TIANG;
+        String url = Global.UPDATE_TIANG;
+
+        if (mCurrentTiang.getIDTiang().isEmpty()){
+            url = Global.ADD_NEW_TIANG;
+        }
+
         request = new MultipartJSONRequest(Request.Method.GET, url,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -240,7 +245,9 @@ public class FormTiang extends AppCompatActivity {
         request.addStringParam("StatusTiang", spStatus.getSelectedItem().toString());
         request.addStringParam("KeteranganTiang", String.valueOf(swKeterangan.isChecked()));
 
-
+        if (!mCurrentTiang.getIDTiang().isEmpty()){
+            request.addStringParam("IDTiang", mCurrentTiang.getIDTiang());
+        }
 
 
         if (fileImagePath != null || !fileImagePath.isEmpty()) {
